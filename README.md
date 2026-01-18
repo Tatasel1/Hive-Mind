@@ -1,54 +1,122 @@
 # HiveMind: Autonomous Logistics Simulator
 
-**HiveMind** is a C++ simulation engine designed to coordinate a heterogeneous fleet of autonomous robots in a futuristic urban environment. [cite_start]The system acts as a central decision-making unit to maximize logistics profit through algorithmic task allocation and pathfinding[cite: 5, 7, 10].
+**HiveMind** is a C++ Object-Oriented simulation engine designed to coordinate a heterogeneous fleet of autonomous robots. It acts as a central decision-making unit ("The Hive Mind") to optimize urban logistics in a futuristic 2030 setting.
+
+The system maximizes profit by managing pathfinding, battery physics, and task allocation for Drones, Ground Robots, and Scooters .
 
 ---
 
-## 1. Context & Objectives
+## 📋 Project Context & Objectives
 
-**Scenario:** It is the year 2030. Urban logistics are managed by autonomous fleets. [cite_start]You act as the **Software Architect** for the "Hive Mind" system [cite: 3-5].
+**Scenario:** It is the year 2030. Urban logistics are handled by autonomous fleets. You play the role of the Software Architect for the "Hive Mind" system .
 
-**Primary Objectives:**
-1.  [cite_start]**Procedural Generation:** Create dynamic city maps or load them from files[cite: 8].
-2.  [cite_start]**Physics Simulation:** Simulate agent movement, battery consumption, and lifecycle[cite: 9].
-3.  [cite_start]**Algorithmic Optimization:** Maximize **Net Profit** using the "Hive Mind" allocation algorithm[cite: 10, 57].
-
----
-
-## 2. Software Architecture
-
-[cite_start]The application is built using modular C++ and strict Object-Oriented Programming (OOP) principles[cite: 7, 96].
-
-### Design Patterns
-* [cite_start]**Singleton:** Implemented for the `HiveMind` class to ensure a unique, centralized coordination point for the fleet[cite: 126].
-* [cite_start]**Strategy Pattern:** Used via the `IMapGenerator` interface to switch between map generation methods[cite: 25, 111]:
-    * [cite_start]`FileMapLoader`: Loads a map from a text file (for debugging/benchmarking)[cite: 28, 120].
-    * [cite_start]`ProceduralMapGenerator`: Generates a random map with walls, stations, and clients[cite: 29, 113].
-* [cite_start]**Polymorphism:** A hierarchy of classes derived from `Agent` (Drone, Robot, Scooter) [cite: 36-37].
+**Core Objectives:**
+1.  **Procedural Generation:** Create dynamic city maps or load them from files [cite: 8, 28-29].
+2.  **Physics Simulation:** Manage battery life, movement, and charging cycles for agents[cite: 9].
+3.  **Algorithmic Optimization:** Maximize **Net Profit** through intelligent dispatching and routing[cite: 10, 57].
 
 ---
 
-## 3. The World (Simulation Environment)
+## 🏗️ Software Architecture
 
-### 3.1 The Map (The Grid)
-[cite_start]The city is an $M \times N$ matrix where each cell has a specific role[cite: 13]:
+The project is built on modular C++ principles, utilizing specific Design Patterns to ensure flexibility:
 
-* [cite_start]`[.]` **Road (Space):** Accessible area[cite: 14].
-* `[#]` **Wall:** Obstacle. [cite_start]Cannot be crossed by ground units[cite: 15].
-* `[B]` **Base (Hub):** Central depot. [cite_start]Spawns agents/packages and acts as a charging station [cite: 16-19].
-* [cite_start]`[S]` **Station:** Supplementary charging locations[cite: 20].
-* [cite_start]`[D]` **Client (Destination):** Delivery locations for packages[cite: 21].
-
-### 3.2 Map Generation & Validation
-* [cite_start]**Generation:** Procedural maps have ~25% wall density[cite: 116].
-* **Validation:** After generation, the map is validated using **BFS (Breadth-First Search)** or Flood Fill. [cite_start]It guarantees that a path exists from the Base (`B`) to all Clients (`D`) and Stations (`S`) [cite: 31-33].
+* **Singleton Pattern:** The `HiveMind` class is a singleton, ensuring a centralized brain for the entire fleet.
+* **Strategy Pattern:** Used for Map Generation (`IMapGenerator`), allowing the system to switch between loading files (`FileMapLoader`) or procedural generation (`ProceduralMapGenerator`) at runtime .
+* **Polymorphism:** A hierarchy of `Agent` classes (Drone, Robot, Scooter) handles distinct physical attributes and movement logic.
 
 ---
 
-## 4. The Fleet (Agents & Physics)
+## 🌍 The Simulation Environment
 
-### 4.1 Agent Specifications
-[cite_start]Each agent type has distinct economic and physical attributes[cite: 38].
+### 1. The Grid Map
+The city is represented as an $M \times N$ matrix.
+
+* `[.]` **Space:** Walkable area.
+* `[#]` **Wall:** Obstacle. Impassable for ground units.
+* `[B]` **Base (Hub):** Central depot for spawning agents/packages and charging .
+* `[S]` **Station:** Supplementary battery charging locations.
+* `[D]` **Destination (Client):** Delivery locations for packages.
+
+**Validation:** Procedurally generated maps are validated using **BFS (Breadth-First Search)** to ensure all Clients and Stations are reachable from the Base .
+
+### 2. Map Input Example (`map_file.txt`)
+When using `FileMapLoader`, the map is parsed from ASCII text:
+
+```text
+..#.................
+.B#D................
+.#...###############
+.#.................#
+.#################.#
+.#.................#
+.#.#################
+.#..................
+.###########..######
+....................
+```
+
+
+I apologize if the previous output seemed truncated or missing sections from the earlier context. Below is the complete, unified Markdown code for the README.md.This version combines the project requirements, architectural details, algorithm descriptions, and the specific input/output file examples into one cohesive document.Markdown# HiveMind: Autonomous Logistics Simulator
+
+**HiveMind** is a C++ Object-Oriented simulation engine designed to coordinate a heterogeneous fleet of autonomous robots. [cite_start]It acts as a central decision-making unit ("The Hive Mind") to optimize urban logistics in a futuristic 2030 setting [cite: 3-5].
+
+[cite_start]The system maximizes profit by managing pathfinding, battery physics, and task allocation for Drones, Ground Robots, and Scooters [cite: 7-10].
+
+---
+
+## 📋 Project Context & Objectives
+
+**Scenario:** It is the year 2030. Urban logistics are handled by autonomous fleets. [cite_start]You play the role of the Software Architect for the "Hive Mind" system [cite: 4-5].
+
+**Core Objectives:**
+1.  [cite_start]**Procedural Generation:** Create dynamic city maps or load them from files [cite: 8, 28-29].
+2.  [cite_start]**Physics Simulation:** Manage battery life, movement, and charging cycles for agents[cite: 9].
+3.  [cite_start]**Algorithmic Optimization:** Maximize **Net Profit** through intelligent dispatching and routing[cite: 10, 57].
+
+---
+
+## 🏗️ Software Architecture
+
+The project is built on modular C++ principles, utilizing specific Design Patterns to ensure flexibility:
+
+* [cite_start]**Singleton Pattern:** The `HiveMind` class is a singleton, ensuring a centralized brain for the entire fleet[cite: 126].
+* [cite_start]**Strategy Pattern:** Used for Map Generation (`IMapGenerator`), allowing the system to switch between loading files (`FileMapLoader`) or procedural generation (`ProceduralMapGenerator`) at runtime [cite: 25-29, 111].
+* [cite_start]**Polymorphism:** A hierarchy of `Agent` classes (Drone, Robot, Scooter) handles distinct physical attributes and movement logic[cite: 36].
+
+---
+
+## 🌍 The Simulation Environment
+
+### 1. The Grid Map
+The city is represented as an $M \times N$ matrix.
+
+* [cite_start]`[.]` **Space:** Walkable area[cite: 14].
+* `[#]` **Wall:** Obstacle. [cite_start]Impassable for ground units[cite: 15].
+* [cite_start]`[B]` **Base (Hub):** Central depot for spawning agents/packages and charging [cite: 16-19].
+* [cite_start]`[S]` **Station:** Supplementary battery charging locations[cite: 20].
+* [cite_start]`[D]` **Destination (Client):** Delivery locations for packages[cite: 21].
+
+[cite_start]**Validation:** Procedurally generated maps are validated using **BFS (Breadth-First Search)** to ensure all Clients and Stations are reachable from the Base [cite: 32-33].
+
+### 2. Map Input Example (`map_file.txt`)
+When using `FileMapLoader`, the map is parsed from ASCII text:
+
+```text
+..#.................
+.B#D................
+.#...###############
+.#.................#
+.#################.#
+.#.................#
+.#.#################
+.#..................
+.###########..######
+....................
+```
+## 🤖 The Agents (The Fleet)
+
+The fleet consists of three agent types, each with specific trade-offs handled by the HiveMind logic.
 
 | Agent Type | Symbol | Movement | Speed (cells/tick) | Max Battery | Cost ($/tick) | Capacity |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: |
@@ -56,56 +124,74 @@
 | **Robot** | `R` | Ground (Avoids Walls) | 1 | 300 | 1 | 4 |
 | **Scooter** | `S` | Ground (Avoids Walls) | 2 | 200 | 4 | 2 |
 
-### 4.2 Lifecycle (State Machine)
-[cite_start]Agents transition through the following states [cite: 42-47]:
-1.  **IDLE:** Waiting at Base (auto-charging).
-2.  **MOVING:** Traveling to a destination (consumes battery).
-3.  **CHARGING:** Regains 25% battery per tick at `B` or `S`.
-4.  **DEAD:** If battery hits 0 outside a station, the agent is lost forever (-500 credit penalty).
+
+### Lifecycle
+* **IDLE:** Waiting at Base.
+* **MOVING:** Consuming battery to reach a target.
+* **CHARGING:** Regaining 25% battery/tick at Base (`B`) or Station (`S`).
+* **DEAD:** Battery hits 0 outside a station (Agent lost, -500 credit penalty).
 
 ---
 
-## 5. HiveMind Algorithm (Business Logic)
+## 🧠 Algorithmic Logic (HiveMind)
 
-### 5.1 Profit Formula
-[cite_start]The system maximizes the following formula [cite: 60-61]:
-$$Profit = (Rewards) - (Operating Costs) - (Penalties)$$
+### 1. Economic Dispatch
+The `assignPackages` method calculates the "Estimated Profit" for every package/agent combination:
 
-* **Rewards:** 200-800 credits per package (random)[cite: 54].
-* **Operating Cost:** Sum of cost/tick for all active agents[cite: 62].
-* **Penalties:**
-    * -500 credits for a Dead Agent[cite: 63].
-    * -200 credits for a Lost Package[cite: 63].
-    * -50 credits for a Late Package[cite: 63].
+$$Profit = Reward - (OpCost \times EstTime) - PotentialPenalties$$
 
-### 5.2 Decision Strategy
-1.  **Task Allocation (Dispatching):**
-    * Calculates "Estimated Profit" for every package/agent pair.
-    * **Battery Check:** Simulates the full path (Pickup → Delivery → Return). [cite_start]If battery is insufficient, it simulates a detour to a Charging Station (`S`) and recalculates costs [cite: 130-131].
-    * **Sorting:** Offers are sorted by profit; high-value tasks go to the most efficient agents[cite: 132].
+* **Battery Awareness:** The system simulates the full trip (Pickup $\rightarrow$ Delivery $\rightarrow$ Return). If the battery is insufficient, it calculates a detour to a Station (`S`) and factors in the charging time/cost .
+* **Priority:** Offers are sorted by profit; high-value packages are assigned to the most efficient agents first.
 
-2.  **Pathfinding (Routing):**
-    * **Drones:** Use Manhattan Distance (direct flight)[cite: 140].
-    * **Ground Units:** Use BFS (Real Distance) to navigate around walls[cite: 140].
-    * **Safety:** If an agent reaches critical battery, it is force-routed to the nearest station[cite: 141].
+### 2. Pathfinding
+* **Drones:** Use Manhattan Distance (direct flight, ignoring walls).
+* **Ground Units:** Use BFS to find the shortest path around walls.
 
 ---
 
-## 6. Configuration & Input Files
+## ⚙️ Configuration (`simulation_setup.txt`)
 
-The simulation is configured via external text files.
-
-### `simulation_setup.txt`
-Controls the simulation parameters .
+The simulation is driven by an external configuration file.
 
 ```text
-MAP_SIZE: 20 20
-MAX_TICKS: 1000
-MAX_STATIONS: 3
-CLIENTS_COUNT: 10
-DRONES: 3
+MAP_SIZE: 20 20       # Grid dimensions (Rows Cols)
+MAX_TICKS: 1000       # Duration of simulation
+MAX_STATIONS: 3       # Number of extra charging stations
+CLIENTS_COUNT: 10     # Number of delivery destinations
+DRONES: 3             # Fleet composition
 ROBOTS: 2
 SCOOTERS: 1
-TOTAL_PACKAGES: 50
-SPAWN_FREQUENCY: 10
+TOTAL_PACKAGES: 50    # Total orders to generate
+SPAWN_FREQUENCY: 10   # New package every N ticks
+```
+
+## 📊 Outputs & Scoring
+
+[cite_start]The goal is to maximize **Net Profit**[cite: 57].
+
+* [cite_start]**Dead Agent:** -500 credits[cite: 63].
+* [cite_start]**Lost Package:** -200 credits[cite: 63].
+* [cite_start]**Late Package:** -50 credits[cite: 63].
+* [cite_start]**Package Reward:** 200-800 credits (random)[cite: 54].
+
+### Final Report Example (`simulation.txt`)
+
+[cite_start]At the end of the run, the system generates a performance report[cite: 87, 168].
+
+```text
+========= FINAL SIMULATION REPORT =========
+
+Packages Delivered: 50
+Packages Lost: 0
+
+Total Rewards: +24536
+Penalty Lost Packages: -0
+Penalty Late Deliveries: -1750
+Penalty Dead Agents: -0
+
+Final Profit: 21128
+
+Agents Total: 6
+Agents Survived: 6
+Agents Dead: 0
 ```
