@@ -1,0 +1,15 @@
+========= FINAL SIMULATION REPORT =========
+
+Packages Delivered: 50
+Packages Lost: 0
+
+Total Rewards: +24536
+Penalty Lost Packages: -0
+Penalty Late Deliveries: -1750
+Penalty Dead Agents: -0
+
+Final Profit: 21128
+
+Agents Total: 6
+Agents Survived: 6
+Agents Dead: 0
