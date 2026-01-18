@@ -62,7 +62,7 @@ The fleet consists of three agent types, each with specific trade-offs handled b
 
 | Agent Type | Symbol | Movement | Speed (cells/tick) | Max Battery | Cost ($/tick) | Capacity |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: |
-| **Drone** | `A` | Air (Ignores Walls) | 3 | 100 | 15 | 1 |
+| **Drone** | `^` | Air (Ignores Walls) | 3 | 100 | 15 | 1 |
 | **Robot** | `R` | Ground (Avoids Walls) | 1 | 300 | 1 | 4 |
 | **Scooter** | `S` | Ground (Avoids Walls) | 2 | 200 | 4 | 2 |
 
