@@ -109,16 +109,16 @@ SPAWN_FREQUENCY: 10   # New package every N ticks
 
 ## 📊 Outputs & Scoring
 
-[cite_start]The goal is to maximize **Net Profit**[cite: 57].
+The goal is to maximize **Net Profit**.
 
-* [cite_start]**Dead Agent:** -500 credits[cite: 63].
-* [cite_start]**Lost Package:** -200 credits[cite: 63].
-* [cite_start]**Late Package:** -50 credits[cite: 63].
-* [cite_start]**Package Reward:** 200-800 credits (random)[cite: 54].
+* **Dead Agent:** -500 credits.
+* **Lost Package:** -200 credits.
+* **Late Package:** -50 credits.
+* **Package Reward:** 200-800 credits (random).
 
 ### Final Report Example (`simulation.txt`)
 
-[cite_start]At the end of the run, the system generates a performance report[cite: 87, 168].
+At the end of the run, the system generates a performance report.
 
 ```text
 ========= FINAL SIMULATION REPORT =========
