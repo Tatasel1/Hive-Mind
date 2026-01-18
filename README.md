@@ -56,64 +56,6 @@ When using `FileMapLoader`, the map is parsed from ASCII text:
 ....................
 ```
 
-
-I apologize if the previous output seemed truncated or missing sections from the earlier context. Below is the complete, unified Markdown code for the README.md.This version combines the project requirements, architectural details, algorithm descriptions, and the specific input/output file examples into one cohesive document.Markdown# HiveMind: Autonomous Logistics Simulator
-
-**HiveMind** is a C++ Object-Oriented simulation engine designed to coordinate a heterogeneous fleet of autonomous robots. [cite_start]It acts as a central decision-making unit ("The Hive Mind") to optimize urban logistics in a futuristic 2030 setting [cite: 3-5].
-
-[cite_start]The system maximizes profit by managing pathfinding, battery physics, and task allocation for Drones, Ground Robots, and Scooters [cite: 7-10].
-
----
-
-## 📋 Project Context & Objectives
-
-**Scenario:** It is the year 2030. Urban logistics are handled by autonomous fleets. [cite_start]You play the role of the Software Architect for the "Hive Mind" system [cite: 4-5].
-
-**Core Objectives:**
-1.  [cite_start]**Procedural Generation:** Create dynamic city maps or load them from files [cite: 8, 28-29].
-2.  [cite_start]**Physics Simulation:** Manage battery life, movement, and charging cycles for agents[cite: 9].
-3.  [cite_start]**Algorithmic Optimization:** Maximize **Net Profit** through intelligent dispatching and routing[cite: 10, 57].
-
----
-
-## 🏗️ Software Architecture
-
-The project is built on modular C++ principles, utilizing specific Design Patterns to ensure flexibility:
-
-* [cite_start]**Singleton Pattern:** The `HiveMind` class is a singleton, ensuring a centralized brain for the entire fleet[cite: 126].
-* [cite_start]**Strategy Pattern:** Used for Map Generation (`IMapGenerator`), allowing the system to switch between loading files (`FileMapLoader`) or procedural generation (`ProceduralMapGenerator`) at runtime [cite: 25-29, 111].
-* [cite_start]**Polymorphism:** A hierarchy of `Agent` classes (Drone, Robot, Scooter) handles distinct physical attributes and movement logic[cite: 36].
-
----
-
-## 🌍 The Simulation Environment
-
-### 1. The Grid Map
-The city is represented as an $M \times N$ matrix.
-
-* [cite_start]`[.]` **Space:** Walkable area[cite: 14].
-* `[#]` **Wall:** Obstacle. [cite_start]Impassable for ground units[cite: 15].
-* [cite_start]`[B]` **Base (Hub):** Central depot for spawning agents/packages and charging [cite: 16-19].
-* [cite_start]`[S]` **Station:** Supplementary battery charging locations[cite: 20].
-* [cite_start]`[D]` **Destination (Client):** Delivery locations for packages[cite: 21].
-
-[cite_start]**Validation:** Procedurally generated maps are validated using **BFS (Breadth-First Search)** to ensure all Clients and Stations are reachable from the Base [cite: 32-33].
-
-### 2. Map Input Example (`map_file.txt`)
-When using `FileMapLoader`, the map is parsed from ASCII text:
-
-```text
-..#.................
-.B#D................
-.#...###############
-.#.................#
-.#################.#
-.#.................#
-.#.#################
-.#..................
-.###########..######
-....................
-```
 ## 🤖 The Agents (The Fleet)
 
 The fleet consists of three agent types, each with specific trade-offs handled by the HiveMind logic.
