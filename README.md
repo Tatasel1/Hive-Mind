@@ -11,9 +11,9 @@ The system maximizes profit by managing pathfinding, battery physics, and task a
 **Scenario:** It is the year 2030. Urban logistics are handled by autonomous fleets. You play the role of the Software Architect for the "Hive Mind" system .
 
 **Core Objectives:**
-1.  **Procedural Generation:** Create dynamic city maps or load them from files [cite: 8, 28-29].
-2.  **Physics Simulation:** Manage battery life, movement, and charging cycles for agents[cite: 9].
-3.  **Algorithmic Optimization:** Maximize **Net Profit** through intelligent dispatching and routing[cite: 10, 57].
+1.  **Procedural Generation:** Create dynamic city maps or load them from files.
+2.  **Physics Simulation:** Manage battery life, movement, and charging cycles for agents.
+3.  **Algorithmic Optimization:** Maximize **Net Profit** through intelligent dispatching and routing.
 
 ---
 
